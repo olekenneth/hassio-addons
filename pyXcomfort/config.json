@@ -1,0 +1,44 @@
+{
+  "name": "Xcomfort Addon",
+  "version": "1",
+  "slug": "xcomfort",
+  "description": "Starts a container with pyXcomfort inside",
+  "arch": ["aarch64", "amd64", "i386"],
+  "startup": "before",
+  "boot": "auto",
+  "devices": ["/dev/ttyUSB0:/dev/ttyUSB0:rwm"],
+  "options": {
+    "mqtt": {
+      "username": "",
+      "password": "",
+      "host": "",
+      "port": 1883,
+      "rootTopic": "homeassistant/"
+    },
+    "devices": [
+      {
+        "name": "MQTT Light 1",
+        "serial": 2268230
+      },
+      {
+        "name": "MQTT Light 2",
+        "serial": 4636856
+      }
+    ]
+  },
+  "schema": {
+    "mqtt": {
+      "username": "str",
+      "password": "str",
+      "host": "str",
+      "port": "int",
+      "rootTopic": "str"
+    },
+    "devices": [
+      {
+        "name": "str",
+        "serial": "int"
+      }
+    ]
+  }
+}
