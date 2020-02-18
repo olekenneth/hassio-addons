@@ -2,7 +2,7 @@
   "name": "Xcomfort Addon",
   "version": "1",
   "slug": "xcomfort",
-  "description": "Starts a container with pyXcomfort inside",
+  "description": "Starts a container with pyXcomfort inside. Please change the serial port id to match yours. Run `hassio hardware info` to figure which one it is. You need to do this in __main__.py as well.",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "before",
   "boot": "auto",
