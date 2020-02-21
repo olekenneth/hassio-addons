@@ -1,1 +1,3 @@
 paho-mqtt==1.4.0
+pythoncrc==1.21
+pyserial==3.4

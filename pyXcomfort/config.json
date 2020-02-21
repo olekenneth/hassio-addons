@@ -2,12 +2,13 @@
   "name": "Xcomfort Addon",
   "version": "1",
   "slug": "xcomfort",
-  "description": "Starts a container with pyXcomfort inside",
-  "arch": ["aarch64", "amd64", "i386"],
+  "description": "Starts a container with pyXcomfort inside. Please set the serial device in config. Run `hassio hardware info` or look in the UI to figure which one it is.",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "before",
   "boot": "auto",
-  "devices": ["/dev/ttyUSB0:/dev/ttyUSB0:rwm"],
+  "auto_uart": true,
   "options": {
+    "device": "",
     "mqtt": {
       "username": "",
       "password": "",
@@ -27,6 +28,7 @@
     ]
   },
   "schema": {
+    "device": "str",
     "mqtt": {
       "username": "str",
       "password": "str",

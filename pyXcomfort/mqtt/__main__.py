@@ -24,7 +24,7 @@ except:
 
 rootTopic = config['mqtt']['rootTopic']
 baseTopic = 'light/xcomfort/'
-xcomfort = Xcomfort(devicePath='/dev/ttyUSB0')
+xcomfort = Xcomfort(devicePath=config['device'])
 
 def getTopic(device):
     return '{}{}{}/'.format(
