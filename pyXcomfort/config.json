@@ -6,8 +6,9 @@
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "before",
   "boot": "auto",
-  "devices": ["/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0:/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0:rwm"],
+  "auto_uart": true,
   "options": {
+    "device": "",
     "mqtt": {
       "username": "",
       "password": "",
@@ -27,6 +28,7 @@
     ]
   },
   "schema": {
+    "device": "str",
     "mqtt": {
       "username": "str",
       "password": "str",
