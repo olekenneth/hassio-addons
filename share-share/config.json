@@ -8,6 +8,9 @@
   "boot": "auto",
   "auto_uart": true,
   "ingress": true,
+  "map": [
+    "share:ro"
+  ],
   "options": {
   },
   "schema": {
