@@ -7,4 +7,4 @@ RUN mkdir /app
 WORKDIR /app
 RUN apk add python3
 
-CMD [ "python3", "-u", "http.server", "8099" ]
+CMD [ "python3", "-u", "-m", "http.server", "8099" ]
