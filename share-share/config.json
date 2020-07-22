@@ -1,0 +1,17 @@
+{
+  "name": "Share Share /share",
+  "version": "1",
+  "slug": "share-share",
+  "description": "Starts Python3 http.server serving the static content stored in /share",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "before",
+  "boot": "auto",
+  "auto_uart": true,
+  "ports": {
+    "8080/tcp": 8080
+  },
+  "options": {
+  },
+  "schema": {
+  }
+}
