@@ -7,9 +7,7 @@
   "startup": "before",
   "boot": "auto",
   "auto_uart": true,
-  "ports": {
-    "8080/tcp": 8080
-  },
+  "ingress": true,
   "options": {
   },
   "schema": {
