@@ -9,7 +9,7 @@
   "auto_uart": true,
   "ingress": true,
   "map": [
-    "share:ro"
+    "share:rw"
   ],
   "options": {
   },

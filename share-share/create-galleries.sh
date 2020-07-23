@@ -1,3 +1,1 @@
-find . -type f -name '*.jpg' -exec sh -c 'for d; do dirname "$d"; done' sh {} + | sort -u -o jpeg_dirs.txt
-while read line; do gallery-init -p $line; done < jpeg_dirs.txt
-gallery-build
+find /share -type f -name '*.jpg' -exec sh -c 'for d; do dirname "$d"; done' sh {} + | sort -u | while read line; do wget -O $line/gallery.html https://raw.githubusercontent.com/gfwilliams/ThinGallery/master/gallery.html; done
