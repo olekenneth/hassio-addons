@@ -4,7 +4,7 @@ import json
 from xcomfort.xcomfort import Xcomfort
 import paho.mqtt.client as mqtt
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 try:
@@ -12,6 +12,7 @@ try:
 except:
     logging.info('No config. Using default - don\'t expect anything to work')
     config = {
+        'device': '',
         'mqtt': {
             'username': '',
             'password': '',
@@ -24,6 +25,7 @@ except:
 
 rootTopic = config['mqtt']['rootTopic']
 baseTopic = 'light/xcomfort/'
+logging.info('Starting pyXcomfort with {}'.format(config['device']))
 xcomfort = Xcomfort(devicePath=config['device'])
 
 def getTopic(device):
@@ -33,7 +35,7 @@ def getTopic(device):
         str(device.serial))
 
 def on_connect(client, userdata, res, code):
-    if code is 0:
+    if code == 0:
         logging.info("connected OK")
         client.subscribe(rootTopic + baseTopic + '+/set')
         xcomfort.lights = config['devices']
@@ -72,7 +74,7 @@ def register_device(device):
     topic = getTopic(device)
     deviceConfig = {
         'schema': 'json',
-        'brightness': device.isDimable,
+        'brightness': True,
         'command_topic': topic + 'set',
         'state_topic': topic + 'state',
         'name': device.name,

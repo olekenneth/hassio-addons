@@ -1,0 +1,39 @@
+name: Xcomfort Addon
+version: "2"
+slug: xcomfort
+description: Starts a container with pyXcomfort inside. Please set the serial device in config.
+init: false
+arch:
+  - aarch64
+  - amd64
+  - i386
+startup: services
+boot: auto
+#devicetree: true
+uart: true
+services:
+  - mqtt:need
+options:
+  device:
+  mqtt:
+    username: ""
+    password: ""
+    host: ""
+    port: 1883
+    rootTopic: homeassistant/
+  devices:
+    - name: MQTT Light 1
+      serial: 226824
+    - name: MQTT Light 2
+      serial: 4636856
+schema:
+  device: device(subsystem=tty)
+  mqtt:
+    username: str
+    password: str
+    host: str
+    port: int
+    rootTopic: str
+  devices:
+    - name: str
+      serial: int
