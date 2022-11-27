@@ -39,7 +39,7 @@ def getTopic(device, device_type = 'light'):
 def on_connect(client, userdata, res, code):
     if code == 0:
         logging.info("connected OK")
-        client.subscribe(root_topic + base_topic + '+/set')
+        client.subscribe(root_topic + 'light/' + base_topic + '+/set')
         xcomfort.lights = config['devices']
         xcomfort.onSwitch(button_pressed)
 
