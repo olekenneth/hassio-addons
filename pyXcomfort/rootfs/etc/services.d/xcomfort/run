@@ -1,0 +1,40 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start Xcomfort MQTT bridge
+# ==============================================================================
+
+bashio::log.info "Starting Xcomfort MQTT bridge..."
+
+# Export MQTT settings as environment variables
+if bashio::services.available "mqtt"; then
+    bashio::log.info "Using MQTT auto-discovery"
+
+    export MQTT_HOST=$(bashio::services "mqtt" "host")
+    export MQTT_PORT=$(bashio::services "mqtt" "port")
+    export MQTT_USERNAME=$(bashio::services "mqtt" "username")
+    export MQTT_PASSWORD=$(bashio::services "mqtt" "password")
+
+    bashio::log.info "MQTT: ${MQTT_HOST}:${MQTT_PORT} (user: ${MQTT_USERNAME})"
+else
+    bashio::log.info "Using manual MQTT configuration"
+
+    export MQTT_HOST=$(bashio::config 'mqtt.host')
+    export MQTT_PORT=$(bashio::config 'mqtt.port')
+    export MQTT_USERNAME=$(bashio::config 'mqtt.username')
+    export MQTT_PASSWORD=$(bashio::config 'mqtt.password')
+fi
+
+# Debug: Check if files exist
+bashio::log.info "Checking /app/mqtt directory..."
+ls -la /app/mqtt/ || bashio::log.error "Failed to list /app/mqtt"
+
+bashio::log.info "Checking Python can import mqtt..."
+cd /app || bashio::exit.nok "Could not change directory to /app"
+
+# Test import
+python3 -c "import mqtt; print('Import OK')" 2>&1 || bashio::log.error "Import failed!"
+
+bashio::log.info "Starting Python application..."
+
+# Start with maximum debugging
+exec python3 -u -m mqtt 2>&1
