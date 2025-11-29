@@ -1,3 +1,6 @@
+## New in version 3.1.1
+- Patch bump to clear docker cache if updates in CHANGELOG.md
+
 ## New in version 3.1
 - Update pyXcomfort with blazing fast updates
 

@@ -7,6 +7,8 @@ WORKDIR /app
 # Install only git (python3 and pip are already in base-python image)
 RUN apk add --no-cache git
 
+COPY ./CHANGELOG.md .
+
 # Clone and install pyXcomfort
 RUN git clone https://github.com/olekenneth/pyXcomfort.git && \
     pip3 install --break-system-packages --no-cache-dir ./pyXcomfort && \
